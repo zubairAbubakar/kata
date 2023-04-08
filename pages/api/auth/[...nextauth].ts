@@ -25,7 +25,7 @@ export const authOptions: AuthOptions = {
                 password: { label: 'password', type: 'password' },
             },
             async authorize(credentials) {
-                if (!credentials?.email || credentials?.password) {
+                if (!credentials?.email || !credentials?.password) {
                     throw new Error('Invalid credentials');
                 }
 
@@ -57,7 +57,7 @@ export const authOptions: AuthOptions = {
     session: {
         strategy: 'jwt',
     },
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: 'process.env.NEXTAUTH_SECRET',
 };
 
 export default NextAuth(authOptions);

@@ -5,6 +5,8 @@ import './globals.css';
 import ClientOnly from './components/ClientOnly';
 import RegisterModal from './components/modals/RegisterModal';
 import ToasterProvider from './providers/ToasterProvider';
+import SigninModal from './components/modals/SigninModal';
+import getCurrentUser from './actions/getCurrentUser';
 
 export const metadata = {
     title: 'Airbnb',
@@ -15,18 +17,21 @@ const font = Inter({
     subsets: ['latin'],
 });
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
+    const currentUser = await getCurrentUser();
+
     return (
         <html lang="en">
             <body className={font.className}>
                 <ClientOnly>
                     <ToasterProvider />
+                    <SigninModal />
                     <RegisterModal />
-                    <Navbar />
+                    <Navbar currentUser={currentUser} />
                 </ClientOnly>
                 {children}
             </body>
