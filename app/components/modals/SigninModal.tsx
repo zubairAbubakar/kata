@@ -13,6 +13,8 @@ import { toast } from 'react-hot-toast';
 import Button from '../Button';
 import Heading from '../Heading';
 import { useRouter } from 'next/navigation';
+import { FcGoogle } from 'react-icons/fc';
+import { AiFillGithub } from 'react-icons/ai';
 
 const SigninModal = () => {
     const registerModal = useRegisterModal();
@@ -53,6 +55,25 @@ const SigninModal = () => {
                 title="Welcome Back"
                 subtitle="Sign in into your account"
             />
+            <div className="justify-center flex flex-row gap-4">
+                <Button
+                    outline
+                    label="Google"
+                    icon={FcGoogle}
+                    onClick={() => signIn('google')}
+                />
+                <Button
+                    outline
+                    label="Github"
+                    icon={AiFillGithub}
+                    onClick={() => signIn('github')}
+                />
+            </div>
+            <div className="relative flex py-5 items-center">
+                <div className="flex-grow border-t border-gray-400"></div>
+                <span className="flex-shrink mx-4 text-gray-400">or</span>
+                <div className="flex-grow border-t border-gray-400"></div>
+            </div>
             <Input
                 id="email"
                 label="Email"
