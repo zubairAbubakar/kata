@@ -1,21 +1,22 @@
 'use client';
 
-import axios from 'axios';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
 
-import useRegisterModal from '@/app/hooks/useRegisterModal';
+import useSignupModal from '@/app/hooks/useSignupModal';
 import useSigininModal from '@/app/hooks/useSigininModal';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Modal from './Modal';
 import Input from '../inputs/Input';
 import { toast } from 'react-hot-toast';
 import Button from '../Button';
 import Heading from '../Heading';
 import { useRouter } from 'next/navigation';
+import { FcGoogle } from 'react-icons/fc';
+import { AiFillGithub } from 'react-icons/ai';
 
 const SigninModal = () => {
-    const registerModal = useRegisterModal();
+    const signupModal = useSignupModal();
     const signinModal = useSigininModal();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -47,12 +48,33 @@ const SigninModal = () => {
         });
     };
 
+    const toogleSigninSignupModal = useCallback(() => {
+        signinModal.onClose();
+        signupModal.onOpen();
+    }, [signinModal, signupModal]);
+
     const bodyContent = (
         <div className="flex flex-col gap-4">
-            <Heading
-                title="Welcome Back"
-                subtitle="Sign in into your account"
-            />
+            <Heading title="Welcome Back!" subtitle="Sign into you account" />
+            <div className="justify-center flex flex-row gap-4">
+                <Button
+                    outline
+                    label="Google"
+                    icon={FcGoogle}
+                    onClick={() => signIn('google')}
+                />
+                <Button
+                    outline
+                    label="Github"
+                    icon={AiFillGithub}
+                    onClick={() => signIn('github')}
+                />
+            </div>
+            <div className="relative flex py-5 items-center">
+                <div className="flex-grow border-t border-gray-400"></div>
+                <span className="flex-shrink mx-4 text-gray-400">or</span>
+                <div className="flex-grow border-t border-gray-400"></div>
+            </div>
             <Input
                 id="email"
                 label="Email"
@@ -77,12 +99,12 @@ const SigninModal = () => {
         <div className="flex flex-col gap-4 mt-3">
             <div className="text-neutral-500 text-center mt-4 font-light">
                 <div className="justify-center flex flex-row items-center gap-2">
-                    <div>Already have an account?</div>
+                    <div>Don't have an account?</div>
                     <div
-                        onClick={registerModal.onClose}
+                        onClick={toogleSigninSignupModal}
                         className="text-neutral-800 cursor-pointer hover:underline"
                     >
-                        Sign in
+                        Create one
                     </div>
                 </div>
             </div>
