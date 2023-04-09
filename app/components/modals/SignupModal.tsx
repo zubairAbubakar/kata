@@ -5,17 +5,20 @@ import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
-import useRegisterModal from '@/app/hooks/useRegisterModal';
-import { useState } from 'react';
+import useSignupModal from '@/app/hooks/useSignupModal';
+import { useCallback, useState } from 'react';
 import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../inputs/Input';
 import { toast } from 'react-hot-toast';
 import Button from '../Button';
 import { signIn } from 'next-auth/react';
+import SigninModal from './SigninModal';
+import useSigininModal from '@/app/hooks/useSigininModal';
 
 const RegisterModal = () => {
-    const registerModal = useRegisterModal();
+    const signupModal = useSignupModal();
+    const signinModal = useSigininModal();
     const [isLoading, setIsLoading] = useState(false);
 
     const {
@@ -32,7 +35,7 @@ const RegisterModal = () => {
         axios
             .post('/api/register', data)
             .then(() => {
-                registerModal.onClose();
+                signupModal.onClose();
             })
             .catch((error: Error) => {
                 toast.error(error.message);
@@ -41,6 +44,11 @@ const RegisterModal = () => {
                 setIsLoading(false);
             });
     };
+
+    const toogleSigninSignupModal = useCallback(() => {
+        signupModal.onClose();
+        signinModal.onOpen();
+    }, [signinModal, signupModal]);
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -97,7 +105,7 @@ const RegisterModal = () => {
                 <div className="justify-center flex flex-row items-center gap-2">
                     <div>Already have an account?</div>
                     <div
-                        onClick={registerModal.onClose}
+                        onClick={toogleSigninSignupModal}
                         className="text-neutral-800 cursor-pointer hover:underline"
                     >
                         Sign in
@@ -110,10 +118,10 @@ const RegisterModal = () => {
     return (
         <Modal
             disabled={isLoading}
-            isOpen={registerModal.isOpen}
+            isOpen={signupModal.isOpen}
             title="Sign up"
             actionLabel="Continue"
-            onClose={registerModal.onClose}
+            onClose={signupModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             body={bodyContent}
             footer={footerContent}

@@ -3,7 +3,7 @@ import Navbar from './components/navbar/Navbar';
 
 import './globals.css';
 import ClientOnly from './components/ClientOnly';
-import RegisterModal from './components/modals/RegisterModal';
+import RegisterModal from './components/modals/SignupModal';
 import ToasterProvider from './providers/ToasterProvider';
 import SigninModal from './components/modals/SigninModal';
 import getCurrentUser from './actions/getCurrentUser';

@@ -4,7 +4,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import Avatar from '../Avatar';
 import { useCallback, useState } from 'react';
 import MenuItem from './MenuItem';
-import useRegisterModal from '@/app/hooks/useRegisterModal';
+import useRegisterModal from '@/app/hooks/useSignupModal';
 import useSigininModal from '@/app/hooks/useSigininModal';
 import { signOut } from 'next-auth/react';
 import { SafeUser } from '@/app/types';
