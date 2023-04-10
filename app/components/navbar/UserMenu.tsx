@@ -20,6 +20,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     const signupModal = useRegisterModal();
     const signinModal = useSigininModal();
     const rentModal = useRentModal();
+
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleOpen = useCallback(() => {
@@ -31,7 +32,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             return signinModal.onOpen();
         }
         rentModal.onOpen();
-    }, [currentUser, signinModal]);
+    }, [currentUser, signinModal, rentModal]);
 
     return (
         <div className="relative">
@@ -72,7 +73,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                                     label="My Properties"
                                 />
                                 <MenuItem
-                                    onClick={() => {}}
+                                    onClick={rentModal.onOpen}
                                     label="Rent my property"
                                 />
                                 <hr />
