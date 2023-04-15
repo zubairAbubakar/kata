@@ -24,67 +24,67 @@ export const categories = [
     {
         label: 'Beach',
         icon: TbBeach,
-        description: 'Properties new the near',
+        description: 'This Property is near the beach',
     },
     {
         label: 'Windmill',
         icon: GiWindmill,
-        description: 'Properties with windmills',
+        description: 'This Property is near windmills',
     },
     {
         label: 'Modern',
         icon: MdOutlineVilla,
-        description: 'Properties with morden looks',
+        description: 'This Property has morden looks',
     },
     {
         label: 'Pools',
         icon: TbPool,
-        description: 'Properties with swimming pool',
+        description: 'This Property has a swimming pool',
     },
     {
         label: 'Isand',
         icon: GiIsland,
-        description: 'Properties on an Island',
+        description: 'This Property is on an Island',
     },
     {
         label: 'Skiing',
         icon: FaSkiing,
-        description: 'Properties with skiing activities',
+        description: 'This Property has skiing activities',
     },
     {
         label: 'Castles',
         icon: GiCastle,
-        description: 'Properties on in castle',
+        description: 'This Property is in castle',
     },
     {
         label: 'Camping',
         icon: GiForestCamp,
-        description: 'Properties in a camp',
+        description: 'This Property is in a camp',
     },
     {
         label: 'Arctic',
         icon: BsSnow,
-        description: 'Properties on an artic region',
+        description: 'This Property is on an artic region',
     },
     {
         label: 'Cave',
         icon: GiCaveEntrance,
-        description: 'Properties in a cave',
+        description: 'This Property is in a cave',
     },
     {
         label: 'Desert',
         icon: GiCactus,
-        description: 'Properties on a desert',
+        description: 'This Property is on a desert',
     },
     {
         label: 'Barn',
         icon: GiBarn,
-        description: 'Properties in a barn',
+        description: 'This Property is in a barn',
     },
     {
         label: 'Lux',
         icon: IoDiamond,
-        description: 'luxurious properties',
+        description: 'This Property is a luxurious property',
     },
 ];
 
