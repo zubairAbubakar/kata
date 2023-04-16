@@ -100,10 +100,9 @@ const RentModal = () => {
                 router.refresh();
                 reset();
                 setStep(STEPS.CATEGORY);
-                rentModal.onClose;
+                rentModal.onClose();
             })
             .catch(() => {
-                console.log('something went wrong');
                 toast.error('Sorry, Something went wrong.');
             })
             .finally(() => {
