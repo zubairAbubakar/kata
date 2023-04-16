@@ -13,7 +13,7 @@ import Button from '../Button';
 import Heading from '../Heading';
 import { useRouter } from 'next/navigation';
 import { FcGoogle } from 'react-icons/fc';
-import { AiFillGithub } from 'react-icons/ai';
+import { AiFillFacebook, AiFillGithub } from 'react-icons/ai';
 
 const SigninModal = () => {
     const signupModal = useSignupModal();
@@ -68,6 +68,12 @@ const SigninModal = () => {
                     label="Github"
                     icon={AiFillGithub}
                     onClick={() => signIn('github')}
+                />
+                <Button
+                    outline
+                    label="Facebook"
+                    icon={AiFillFacebook}
+                    onClick={() => signIn('facebook')}
                 />
             </div>
             <div className="relative flex py-5 items-center">

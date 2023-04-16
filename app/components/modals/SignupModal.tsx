@@ -1,19 +1,17 @@
 'use client';
 
 import axios from 'axios';
-import { AiFillGithub } from 'react-icons/ai';
+import { AiFillFacebook, AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
 import useSignupModal from '@/app/hooks/useSignupModal';
 import { useCallback, useState } from 'react';
 import Modal from './Modal';
-import Heading from '../Heading';
 import Input from '../inputs/Input';
 import { toast } from 'react-hot-toast';
 import Button from '../Button';
 import { signIn } from 'next-auth/react';
-import SigninModal from './SigninModal';
 import useSigininModal from '@/app/hooks/useSigininModal';
 
 const RegisterModal = () => {
@@ -66,6 +64,12 @@ const RegisterModal = () => {
                     label="Github"
                     icon={AiFillGithub}
                     onClick={() => signIn('github')}
+                />
+                <Button
+                    outline
+                    label="Facebook"
+                    icon={AiFillFacebook}
+                    onClick={() => signIn('facebook')}
                 />
             </div>
             <div className="relative flex py-5 items-center">
